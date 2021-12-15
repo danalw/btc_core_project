@@ -129,20 +129,11 @@ class ExampleTest(BitcoinTestFramework):
     #     pass
 
     def nodes_info(self):
-        """Do some custom behaviour for this test
-
-        Define it in a method here because you're going to use it repeatedly.
-        If you think it's useful in general, consider moving it to the base
-        BitcoinTestFramework class so other tests can use it."""
-
         self.log.info("Status:")
         self.log.info("Number of nodes:" + str(len(self.nodes)))
         
         for i in enumerate(self.nodes):
             self.log.info("node: " + str(i[0]) + "\tblock count:" + str(i[1].getblockcount()))
-#            self.log.info("block count:" + str(i[1].getblockcount()))
-        #self.log.info("Running custom_method")
-
 
     def custom_method(self):
         """Do some custom behaviour for this test
@@ -180,12 +171,12 @@ class ExampleTest(BitcoinTestFramework):
         #self.log.info("Calling a custom method")
         #self.custom_method()
         
-
 #############
+#EDITED PART
 #############
-
-        self.nodes_info()
-        new_blocks = int(input("How many new blocks append to node[1]? max 10\n"))
+        
+        self.nodes_info() #def on #131
+        new_blocks = int(input("How many new blocks do you want to append to node[1]? max 10\n"))
         if new_blocks  > 10: 
             new_blocks  = 10
             
