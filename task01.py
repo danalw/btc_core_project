@@ -185,20 +185,20 @@ class ExampleTest(BitcoinTestFramework):
 #############
 
         self.nodes_info()
-        new_nodes = int(input("How many new nodes append to node[1]? max 10\n"))
-        if new_nodes > 10: 
-            new_nodes = 10
+        new_blocks = int(input("How many new blocks append to node[1]? max 10\n"))
+        if new_blocks  > 10: 
+            new_blocks  = 10
             
-        final_height = self.nodes[1].getblockcount() + new_nodes
+        final_height = self.nodes[1].getblockcount() + new_blocks
        # Create P2P connections will wait for a verack to make sure the connection is fully up
         peer_messaging = self.nodes[1].add_p2p_connection(BaseNode())
 
-        self.log.info("Create " + str(new_nodes) + " more blocks")
+        self.log.info("Create " + str(new_blocks) + " more blocks")
         self.tip = int(self.nodes[1].getbestblockhash(), 16)
         self.block_time = self.nodes[1].getblock(self.nodes[0].getbestblockhash())['time'] + 1
 
         height = self.nodes[1].getblockcount()
-        for _ in range(new_nodes):
+        for _ in range(new_blocks):
             # Use the blocktools functionality to manually build a block.
             # Calling the generate() rpc is easier, but this allows us to exactly
             # control the blocks and transactions.
